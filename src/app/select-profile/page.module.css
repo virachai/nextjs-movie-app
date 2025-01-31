@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #141414;
+  color: white;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.profiles {
+  display: flex;
+  gap: 2rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+
+.profileImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profileImage .defaultIcon {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #333;
+}
+
+.profileName {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.selected .profileImage {
+  border-color: white;
+}
+
+.manageProfilesButton {
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.manageProfilesButton:hover {
+  background-color: #555;
+}
