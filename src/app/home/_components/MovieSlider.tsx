@@ -8,22 +8,10 @@ import "swiper/css"; // Import Swiper's styles
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import MovieCardOverlay from "./MovieCardOverlay";
+import type { Movie } from "@/types";
 
-// Define Movie type based on what's being used
-type Movie = {
-  id: number;
-  backdrop_path: string;
-  poster_path: string;
-  title: string;
-  overview: string;
-  release_date: string;
-  genre_ids: number[];
-};
-
-// Include MovieCard component definition directly
 function MovieCard({ movie, large }: { movie: Movie; large?: boolean }) {
-  const baseClasses =
-    "relative cursor-pointer h-32 max-w-[240px] w-full";
+  const baseClasses = "relative cursor-pointer h-32 max-w-[230px] w-full";
   const largeClasses = large ? "h-60" : "";
 
   return (
@@ -31,31 +19,20 @@ function MovieCard({ movie, large }: { movie: Movie; large?: boolean }) {
       <Image
         src={movie.backdrop_path}
         alt="Movie"
-        className="absolute size-full rounded-sm object-cover"
+        className="absolute size-full"
         fill
       />
-      <div className="relative z-10 h-32 w-full opacity-0 transition duration-300 hover:scale-110 hover:opacity-100">
-        <div className="z-10 flex size-full items-center justify-center rounded-lg border bg-gradient-to-b from-transparent via-black/50 to-black">
+
+      <div className="relative h-56 w-full opacity-0 transition duration-300 hover:scale-125 hover:opacity-100 hover:z-30">
+        <div className="flex size-full items-center justify-center rounded-lg border bg-gradient-to-b from-transparent via-black/50 to-black">
           <Image
-            src={movie.backdrop_path}
+            src={movie.poster_path}
             alt="Movie"
-            className="absolute -z-10 size-full rounded-lg object-cover"
             fill
+            className="absolute -z-10 size-full rounded-lg object-cover"
           />
 
-          <div className="relative z-10 h-60 w-full opacity-0 transition duration-300 hover:scale-110 hover:opacity-100">
-            <div className="z-10 flex size-full items-center justify-center rounded-lg border bg-gradient-to-b from-transparent via-black/50 to-black">
-              <Image
-                src={movie.backdrop_path}
-                alt="Movie"
-                width={800}
-                height={800}
-                className="absolute -z-10 size-full rounded-lg object-cover"
-              />
-
-              <MovieCardOverlay movie={movie} />
-            </div>
-          </div>
+          <MovieCardOverlay movie={movie} />
         </div>
       </div>
     </div>
@@ -69,13 +46,13 @@ const NavigationButtons = () => {
   return (
     <>
       <div
-        className="absolute left-0 top-1/2 z-20 -translate-y-1/2 cursor-pointer prev"
+        className="absolute left-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer prev"
         onClick={() => swiper.slidePrev()}
       >
         <ChevronLeft className="h-6 w-6 text-white" />
       </div>
       <div
-        className="absolute right-0 top-1/2 z-20 -translate-y-1/2 cursor-pointer next"
+        className="absolute right-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer next"
         onClick={() => swiper.slideNext()}
       >
         <ChevronRight className="h-6 w-6 text-white" />

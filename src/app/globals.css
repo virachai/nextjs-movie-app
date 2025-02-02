@@ -70,4 +70,12 @@
     -moz-user-select: none;
     user-select: none;
   }
+
+  .swiper-container {
+    overflow: visible !important;
+  }
+
+  .swiper-container .swiper-slide:hover {
+    z-index: 30;
+  }
 }
