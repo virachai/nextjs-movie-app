@@ -63,7 +63,7 @@ export default function ProfilesPage() {
           {profiles.map((profile) => (
             <Link
               key={profile.id}
-              href={`/browse?profile=${profile.id}`}
+              href={`/switch-profile?profile=${profile.id}`}
               className="group flex flex-col items-center transition-transform duration-200"
             >
               <div className="relative border-2 group-hover:border-white group-focus:border-white border-transparent rounded-md w-full max-w-[200px] overflow-hidden aspect-square">
@@ -73,13 +73,11 @@ export default function ProfilesPage() {
                   fill
                   className="object-cover"
                 />
-                {profile?.type && (
-                  <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-40 opacity-100 transition-opacity duration-200">
-                    <span className="font-semibold text-center text-lg text-white">
-                      {profile.name}
-                    </span>
-                  </div>
-                )}
+                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-200">
+                  <span className="font-semibold text-center text-lg text-white">
+                    {profile.name}
+                  </span>
+                </div>
               </div>
               <span className="group-hover:text-white text-gray-400 text-sm sm:text-base">
                 {profile.name}
