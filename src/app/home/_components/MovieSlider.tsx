@@ -11,7 +11,8 @@ import MovieCardOverlay from "./MovieCardOverlay";
 import type { Movie } from "@/types";
 
 function MovieCard({ movie, large }: { movie: Movie; large?: boolean }) {
-  const baseClasses = "relative cursor-pointer h-32 max-w-[230px] w-full";
+  const baseClasses =
+    "relative cursor-pointer h-32 max-w-[230px] min-w-[200px] w-full";
   const largeClasses = large ? "h-60" : "";
 
   return (
@@ -19,17 +20,17 @@ function MovieCard({ movie, large }: { movie: Movie; large?: boolean }) {
       <Image
         src={movie.backdrop_path}
         alt="Movie"
-        className="absolute size-full"
+        className="z-[1] absolute object-cover"
         fill
       />
 
-      <div className="relative h-56 w-full opacity-0 transition duration-300 hover:scale-125 hover:opacity-100 hover:z-30">
-        <div className="flex size-full items-center justify-center rounded-lg border bg-gradient-to-b from-transparent via-black/50 to-black">
+      <div className="z-10 absolute opacity-0 hover:opacity-100 w-full h-32 hover:h-56 transition duration-300 test-1 hover:scale-125">
+        <div className="flex justify-center items-center bg-gradient-to-b from-transparent via-black/50 to-black border rounded-lg size-full">
           <Image
             src={movie.poster_path}
             alt="Movie"
             fill
-            className="absolute -z-10 size-full rounded-lg object-cover"
+            className="-z-10 absolute object-cover"
           />
 
           <MovieCardOverlay movie={movie} />
@@ -46,16 +47,16 @@ const NavigationButtons = () => {
   return (
     <>
       <div
-        className="absolute left-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer prev"
+        className="top-1/2 left-0 z-10 absolute -translate-y-1/2 cursor-pointer prev"
         onClick={() => swiper.slidePrev()}
       >
-        <ChevronLeft className="h-6 w-6 text-white" />
+        <ChevronLeft className="w-6 h-6 text-white" />
       </div>
       <div
-        className="absolute right-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer next"
+        className="top-1/2 right-0 z-10 absolute -translate-y-1/2 cursor-pointer next"
         onClick={() => swiper.slideNext()}
       >
-        <ChevronRight className="h-6 w-6 text-white" />
+        <ChevronRight className="w-6 h-6 text-white" />
       </div>
     </>
   );
@@ -63,7 +64,7 @@ const NavigationButtons = () => {
 
 const MovieSlider = ({ movies }: { movies: Movie[] }) => {
   return (
-    <div className="relative w-full">
+    <div className="relative z-auto w-full">
       {/* Swiper Container */}
       <Swiper
         slidesPerView={6} // Items per slide
@@ -76,14 +77,14 @@ const MovieSlider = ({ movies }: { movies: Movie[] }) => {
             slidesPerView: 6,
           },
           768: {
-            slidesPerView: 5,
+            slidesPerView: 4,
           },
           480: {
             slidesPerView: 3,
           },
         }}
         pagination={{ clickable: true }} // Dots pagination
-        className="swiper-container"
+        className="z-auto swiper-container"
       >
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>

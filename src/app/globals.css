@@ -76,6 +76,6 @@
   }
 
   .swiper-container .swiper-slide:hover {
-    z-index: 30;
+    z-index: 1;
   }
 }

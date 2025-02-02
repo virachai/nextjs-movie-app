@@ -21,7 +21,7 @@ export default function MovieCardOverlay({ movie }: Props) {
 
   return (
     <>
-      <button className="-mt-14">
+      <button className="-mt-14 top-60">
         <PlayCircle className="size-20" />
       </button>
 
@@ -46,17 +46,10 @@ export default function MovieCardOverlay({ movie }: Props) {
       </div>
 
       <div className="absolute bottom-0 left-0 p-5">
-        <h1 className="line-clamp-1 text-lg font-bold">{title}</h1>
+        <h1 className="line-clamp-2 text-[0.9rem] font-bold">{title}</h1>
         <div className="flex items-center gap-x-2">
           <p className="text-sm font-normal">{release_year}</p>
-          {/* <p className="rounded border border-gray-200 px-1 py-0.5 text-sm font-normal">
-            {age}+
-          </p> */}
-          {/* <p className="text-sm font-normal">{duration}h</p> */}
         </div>
-        {/* <p className="line-clamp-1 text-sm font-light text-gray-200">
-          {overview}
-        </p> */}
       </div>
     </>
   );
