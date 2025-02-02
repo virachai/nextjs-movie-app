@@ -24,12 +24,12 @@ export default function MovieCardOverlay({ movie }: Props) {
     overview,
     release,
     title,
-    watchlists,
-    youtubeString,
+    // watchlists,
+    // youtubeString,
   } = movie;
 
-  const isWatchlist = watchlists.length > 0 ? true : false;
-  const watchlistId = watchlists[0]?.id;
+  const isWatchlist = false; //watchlists.length > 0 ? true : false;
+  const watchlistId = 1; //watchlists[0]?.id;
 
   return (
     <>
@@ -75,12 +75,12 @@ export default function MovieCardOverlay({ movie }: Props) {
         key={id}
         state={isPlayerOpen}
         changeState={setIsPlayerOpen}
-        age={age}
-        duration={duration}
+        age={18}
+        duration={0}
         overview={overview}
-        release={release}
+        release={2000}
         title={title}
-        youtubeUrl={youtubeString}
+        youtubeUrl={""}
       />
     </>
   );

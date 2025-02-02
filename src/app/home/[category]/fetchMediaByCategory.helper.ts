@@ -5,7 +5,7 @@ export async function fetchMediasByCategory(
   category: MediaCategory,
   userId: string
 ) {
-  console.log("fetchMediasByCategory", userId);
+  // console.log("fetchMediasByCategory", userId);
   switch (category) {
     case "shows": {
       // const data = await prisma.movie.findMany({

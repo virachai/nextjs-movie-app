@@ -10,7 +10,6 @@ export default async function MovieClip() {
   if (!data) {
     return <h2 className="font-bold text-2xl text-center">Loading...</h2>;
   }
-  console.log(data);
   const {
     backdrop_path,
     title,
@@ -36,8 +35,9 @@ export default async function MovieClip() {
             className="static-image w-full h-full hero image-layer object-cover"
             src={movieImage}
             alt={title}
-            layout="fill"
-            objectFit="cover"
+            fill
+            // layout="fill"
+            // objectFit="cover"
           />
 
           {/* Vignette layers for the dark overlay effect */}
