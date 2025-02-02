@@ -1,23 +1,18 @@
-// import { redirect } from "next/navigation";
-// import { getServerSession } from "next-auth";
-
-// import { authOptions } from "@/lib/authOptions";
-
+// Import the CSS module
+import styles from "./page.module.css"; // Adjust the path if necessary
 import Navbar from "./_components/Navbar";
 
 type Props = {
   children: React.ReactNode;
 };
 
-export default async function HomeLayout({ children }: Props) {
-  // const session = await getServerSession(authOptions);
-
-  // if (!session) redirect("/login");
-
+export default async function Page({ children }: Props) {
   return (
     <>
       <Navbar />
-      <main className="mx-auto sm:px-6 lg:px-8 w-11/12 sm:w-full max-w-7xl">
+      <main
+        className={`${styles.mainView} -mt-[75px] px-0 w-full mx-auto`}
+      >
         {children}
       </main>
     </>

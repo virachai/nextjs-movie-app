@@ -16,7 +16,7 @@ export default function NavLink({ path, label }: Props) {
   return (
     <li>
       <Link
-        className={cn("text-sm font-normal text-gray-300", {
+        className={cn("text-sm font-bold text-gray-300", {
           "text-white underline": pathname === path,
         })}
         href={path}

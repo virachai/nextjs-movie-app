@@ -49,11 +49,25 @@
   }
 }
 
-/* @layer base {
+@layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-black text-foreground;
   }
-} */
+
+  body,
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #141414;
+    color: #fff;
+    cursor: default;
+    font-family: Netflix Sans, Helvetica Neue, Segoe UI, Roboto, Ubuntu,
+      sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+}

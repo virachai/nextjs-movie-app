@@ -10,7 +10,8 @@ export async function findMovie(): Promise<Movie | null> {
 
     // If the response is successful, parse and return the movie data
     if (response.ok) {
-      const data = await response.json();
+      const list = await response.json();
+      const data = list[0]; // Assuming the first item is the movie data
 
       // Transform the data to match the `Movie` type
       const movie: Movie = {

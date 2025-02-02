@@ -1,6 +1,6 @@
 "use client";
 
-import { InfoIcon, PlayCircle } from "lucide-react";
+import { PlusIcon, PlayCircle } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -30,18 +30,20 @@ export default function MovieButtons({
 
   return (
     <>
+      {/* Play Button with Tailwind CSS */}
       <Button
         onClick={() => setIsPlayerOpen(true)}
-        className="text-lg font-medium"
+        className="flex justify-center items-center bg-[white] hover:opacity-[0.95] px-6 py-2 rounded-md font-bold text-black text-lg hover:scale-105 transition-all duration-200 active:scale-100"
       >
-        <PlayCircle className="mr-2 size-6" /> Play
+        <PlayCircle className="mr-2 w-5 h-5" /> Play
       </Button>
 
+      {/* More Info Button with Tailwind CSS */}
       <Button
         onClick={() => setIsPlayerOpen(true)}
-        className="bg-white/40 text-lg font-medium text-white hover:bg-white/30"
+        className="flex justify-center items-center bg-[#6d6e71cc] hover:bg-[#6d6e71d9] ml-2 px-6 py-2 rounded-md font-bold text-lg text-white hover:scale-105 transition-all duration-200 active:scale-100"
       >
-        <InfoIcon className="mr-2 size-6" /> Learn More
+        <PlusIcon className="mr-2 w-5 h-5" /> My list
       </Button>
 
       <VideoPlayerModal
