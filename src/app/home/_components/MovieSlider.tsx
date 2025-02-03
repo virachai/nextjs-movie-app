@@ -36,7 +36,7 @@ const MovieSlider = ({ movies, large }: MovieSliderProps) => {
             slidesPerView: 4,
           },
           350: {
-            slidesPerView: 3,
+            slidesPerView: large ? 2 : 3,
           },
           0: {
             slidesPerView: 2,

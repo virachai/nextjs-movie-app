@@ -63,7 +63,7 @@ export default function ProfilesPage() {
           {profiles.map((profile) => (
             <Link
               key={profile.id}
-              href={`/switch-profile?profile=${profile.id}`}
+              href={`/home?profile=${profile.id}`}
               className="group flex flex-col items-center transition-transform duration-200"
             >
               <div className="relative border-2 group-hover:border-white group-focus:border-white border-transparent rounded-md w-full max-w-[200px] overflow-hidden aspect-square">
