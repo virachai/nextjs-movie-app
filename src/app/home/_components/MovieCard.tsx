@@ -1,7 +1,7 @@
 // src/app/home/_components/MovieCard.tsx
 import React from "react";
 import Image from "next/image";
-import MovieCardOverlay from "./MovieCardOverlay";
+// import MovieCardOverlay from "./MovieCardOverlay";
 import type { Movie } from "@/types";
 
 interface MovieCardProps {
@@ -13,7 +13,7 @@ function MovieCard({ movie, large }: MovieCardProps) {
   const baseClasses =
     "relative cursor-pointer h-[150px] max-w-[280px] min-w-[100px] w-full";
   const largeClasses = large ? "h-80" : "";
-  const largeClassesOverlay = large ? "h-80" : "h-56";
+  // const largeClassesOverlay = large ? "h-80" : "h-56";
   const imageSrc = large ? movie.poster_path : movie.backdrop_path;
 
   return (
@@ -32,8 +32,8 @@ function MovieCard({ movie, large }: MovieCardProps) {
         fill
       />
 
-      <div
-        className={`relative opacity-0 hover:opacity-100 w-full ${largeClassesOverlay} transition duration-300 hover:scale-125 hover:z-30`}
+      {/* <div
+        className={`relative opacity-0 hover:opacity-100 sm:w-full ${largeClassesOverlay} transition duration-300 sm:hover:scale-125 hover:z-30 hover:fixed hover:top-0 hover:left-0 hover:right-0`}
       >
         <div className="flex justify-center items-center bg-gradient-to-b from-transparent via-black/50 to-black size-full">
           <Image
@@ -45,7 +45,7 @@ function MovieCard({ movie, large }: MovieCardProps) {
 
           <MovieCardOverlay movie={movie} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
