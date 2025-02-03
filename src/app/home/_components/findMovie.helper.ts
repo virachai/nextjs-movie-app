@@ -1,12 +1,13 @@
 import type { Movie } from "@/types";
 
-// Load the BASE_API URL from the environment variables
-const BASE_API = process.env.BASE_API || "http://localhost:4000"; // Default fallback if BASE_API isn't set
+// Load the NEXT_PUBLIC_BASE_API URL from the environment variables
+const NEXT_PUBLIC_BASE_API =
+  process.env.NEXT_PUBLIC_BASE_API || "http://localhost:4000"; // Default fallback if NEXT_PUBLIC_BASE_API isn't set
 
 export async function findMovie(): Promise<Movie | null> {
   try {
     // Fetch the movie data from the API endpoint
-    const response = await fetch(`${BASE_API}/movies/billboard`);
+    const response = await fetch(`${NEXT_PUBLIC_BASE_API}/movies/billboard`);
 
     // If the response is successful, parse and return the movie data
     if (response.ok) {

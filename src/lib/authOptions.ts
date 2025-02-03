@@ -11,8 +11,8 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // Use the BASE_API environment variable
-        const baseApiUrl = process.env.BASE_API;
+        // Use the NEXT_PUBLIC_BASE_API environment variable
+        const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API;
 
         // Make the POST request to your backend API
         const res = await fetch(`${baseApiUrl}/auth/login`, {

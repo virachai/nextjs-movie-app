@@ -1,5 +1,6 @@
 // src/app/home/_components/fetchData.ts
-const BASE_API = process.env.BASE_API || "http://localhost:4000";
+const NEXT_PUBLIC_BASE_API =
+  process.env.NEXT_PUBLIC_BASE_API || "http://localhost:4000";
 
 export async function fetchData<T>(
   endpoint: string,
@@ -13,8 +14,10 @@ export async function fetchData<T>(
         ).toString()}`
       : "";
 
-    // Use the BASE_API constant in the fetch URL
-    const response = await fetch(`${BASE_API}${endpoint}${queryString}`);
+    // Use the NEXT_PUBLIC_BASE_API constant in the fetch URL
+    const response = await fetch(
+      `${NEXT_PUBLIC_BASE_API}${endpoint}${queryString}`
+    );
 
     // Check if the response is successful (status 200)
     if (!response.ok) {

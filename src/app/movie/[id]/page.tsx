@@ -47,14 +47,15 @@ const MovieDetailPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const BASE_API = process.env.BASE_API || "http://localhost:4000"; // Default fallback if BASE_API isn't set
+  const NEXT_PUBLIC_BASE_API =
+    process.env.NEXT_PUBLIC_BASE_API || "http://localhost:4000"; // Default fallback if NEXT_PUBLIC_BASE_API isn't set
 
   useEffect(() => {
     if (!id) return; // Ensure that `id` is available before making API request
 
     const fetchMovieDetails = async () => {
       try {
-        const res = await fetch(`${BASE_API}/movies/${id}`);
+        const res = await fetch(`${NEXT_PUBLIC_BASE_API}/movies/${id}`);
         if (!res.ok) {
           throw new Error("Failed to fetch movie data");
         }
@@ -69,7 +70,7 @@ const MovieDetailPage: React.FC = () => {
     };
 
     fetchMovieDetails();
-  }, [id, BASE_API]); // Dependency on `id` and `BASE_API` ensures it runs when either changes
+  }, [id, NEXT_PUBLIC_BASE_API]); // Dependency on `id` and `NEXT_PUBLIC_BASE_API` ensures it runs when either changes
 
   const handleBack = () => {
     router.back();
@@ -85,7 +86,7 @@ const MovieDetailPage: React.FC = () => {
   if (error)
     return (
       <div className="flex justify-center items-center min-h-screen text-red-500">
-        {error}
+        {error} {process.env.NEXT_PUBLIC_BASE_API}
       </div>
     );
 
