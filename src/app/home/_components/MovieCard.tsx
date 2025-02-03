@@ -12,17 +12,14 @@ interface MovieCardProps {
 
 function MovieCard({ movie, large }: MovieCardProps) {
   const baseClasses =
-    "relative cursor-pointer h-[150px] max-w-[280px] min-w-[100px] w-full";
-  const largeClasses = large ? "h-80" : "";
+    "relative cursor-pointer max-w-[280px] min-w-[100px] w-full";
+  const largeClasses = large ? "h-80" : "h-[130px]";
   const largeClassesOverlay = large ? "h-80" : "h-56";
   const imageSrc = large ? movie.poster_path : movie.backdrop_path;
 
   return (
     <div className={`${baseClasses} ${largeClasses}`}>
       <Link href={`/movie/${movie.id}`} passHref>
-        {" "}
-        {/* Wrap the content in Link */}{" "}
-        {/* `Link` should wrap an anchor tag */}
         <Image
           src={imageSrc}
           alt="Movie"

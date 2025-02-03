@@ -10,19 +10,12 @@ export default async function MovieClip() {
   if (!data) {
     return <h2 className="font-bold text-2xl text-center">Loading...</h2>;
   }
-  const {
-    backdrop_path,
-    title,
-    overview,
-    age,
-    duration,
-    release,
-    youtubeString,
-  } = data;
 
   // Fallback for backdrop image
   const movieImage =
-    backdrop_path && backdrop_path !== "" ? backdrop_path : PlaceholderImage;
+    data.backdrop_path && data.backdrop_path !== ""
+      ? data.backdrop_path
+      : PlaceholderImage;
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -34,7 +27,7 @@ export default async function MovieClip() {
           <Image
             className="static-image w-full h-full hero image-layer object-cover"
             src={movieImage}
-            alt={title}
+            alt={data.title}
             fill
           />
 
@@ -47,23 +40,14 @@ export default async function MovieClip() {
         <div className="top-0 left-0 z-10 absolute flex justify-start items-center px-4 sm:px-8 lg:px-16 w-full h-full min-w-[375px]">
           <div className="top-0 bottom-0 z-10 absolute flex flex-col justify-end space-y-6 pb- pb-[160px] w-[80%] lg:w-2/5">
             <h1 className="font-extrabold text-3xl text-white sm:text-4xl lg:text-5xl leading-tight">
-              {title}
+              {data.title}
             </h1>
             <p className="line-clamp-2 text-lg text-white sm:text-xl max-h-0 md:max-h-none">
-              {overview}
+              {data.overview}
             </p>
 
             <div className="flex gap-x-4 mt-6">
-              <MovieButtons
-                age={age ?? 0}
-                duration={duration ?? 0}
-                id={data.id}
-                overview={overview}
-                releaseDate={release || new Date().getFullYear()}
-                title={title}
-                youtubeUrl={youtubeString || ""}
-                key={data.id}
-              />
+              <MovieButtons movie={data} />
             </div>
           </div>
         </div>

@@ -1,30 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowLeft, ThumbsUp, Share, Plus, CalendarDays } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-
+import { useRouter, useParams } from "next/navigation";
 import { Movie } from "@/types";
+import PlaceholderImage from "@/../public/placeholder.svg";
 
-// Mock data for demonstration (you can replace this with an API call)
-const mockMovies = [
-  {
-    id: 1241982,
-    backdrop_path:
-      "https://image.tmdb.org/t/p/w1280//zo8CIjJ2nfNOevqNajwMRO6Hwka.jpg",
-    poster_path:
-      "https://image.tmdb.org/t/p/w500//aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg",
-    title: "Moana 2",
-    overview:
-      "After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.",
-    release_date: "2024-11-21",
-    genre_ids: [16, 12, 10751, 35, 9648],
-    release_year: 2024,
-  },
-];
-
+// Mock data for similar movies
 const similarMoviesMock = [
   {
     id: 277834,
@@ -54,20 +38,56 @@ const similarMoviesMock = [
   },
 ];
 
-interface MovieDetailPageProps {
-  movie?: Movie;
-  similarMovies?: Movie[];
-}
-
-const MovieDetailPage: React.FC<MovieDetailPageProps> = ({
-  movie = mockMovies[0],
-  similarMovies = similarMoviesMock,
-}) => {
+const MovieDetailPage: React.FC = () => {
   const router = useRouter();
+  const { id } = useParams(); // Use `useParams` to get the dynamic route parameter
+
+  const [movie, setMovie] = useState<Movie | null>(null);
+  const [similarMovies] = useState<Movie[]>(similarMoviesMock); // Use the mock data directly
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const BASE_API = process.env.BASE_API || "http://localhost:4000"; // Default fallback if BASE_API isn't set
+
+  useEffect(() => {
+    if (!id) return; // Ensure that `id` is available before making API request
+
+    const fetchMovieDetails = async () => {
+      try {
+        const res = await fetch(`${BASE_API}/movies/${id}`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch movie data");
+        }
+        const data = await res.json();
+        setMovie(data);
+      } catch (error) {
+        console.error("Error fetching movie data:", error);
+        setError("Failed to load movie details.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [id, BASE_API]); // Dependency on `id` and `BASE_API` ensures it runs when either changes
 
   const handleBack = () => {
     router.back();
   };
+
+  if (loading)
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        Loading...
+      </div>
+    ); // Show a loading indicator
+
+  if (error)
+    return (
+      <div className="flex justify-center items-center min-h-screen text-red-500">
+        {error}
+      </div>
+    );
 
   return (
     <div className="bg-zinc-900 text-white min-h-screen relative">
@@ -75,6 +95,7 @@ const MovieDetailPage: React.FC<MovieDetailPageProps> = ({
       <button
         onClick={handleBack}
         className="absolute top-4 left-4 z-10 hover:bg-black/50 p-2 rounded-full transition"
+        aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
       </button>
@@ -84,26 +105,37 @@ const MovieDetailPage: React.FC<MovieDetailPageProps> = ({
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-zinc-900" />
         <div className="absolute inset-0">
           <Image
-            src={movie.backdrop_path}
-            alt={movie.title}
-            className="w-full h-full object-cover"
+            src={movie?.backdrop_path || PlaceholderImage}
+            alt={movie?.title || "Movie"}
+            className="hidden sm:block absolute object-cover"
             fill
-            priority
+            sizes="100vw"
+          />
+          <Image
+            src={movie?.poster_path || PlaceholderImage}
+            alt={movie?.title || "Movie"}
+            className="sm:hidden absolute object-cover"
+            fill
+            sizes="100vw"
           />
         </div>
 
         {/* Content Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{movie.title}</h1>
+        <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {movie?.title}
+            </h1>
 
-          {/* Movie Meta Info */}
-          <div className="flex items-center gap-4 text-sm mb-4">
-            {movie.release_year && (
-              <div className="flex items-center gap-1">
-                <CalendarDays className="w-4 h-4" />
-                <span>{movie.release_year}</span>
-              </div>
-            )}
+            {/* Movie Meta Info */}
+            <div className="flex items-center gap-4 text-sm mb-4">
+              {movie?.release_year && (
+                <div className="flex items-center gap-1">
+                  <CalendarDays className="w-4 h-4" />
+                  <span>{movie.release_year}</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -116,7 +148,7 @@ const MovieDetailPage: React.FC<MovieDetailPageProps> = ({
         </button>
 
         {/* Overview */}
-        <p className="text-gray-300 mb-8 text-lg">{movie.overview}</p>
+        <p className="text-gray-300 mb-8 text-lg">{movie?.overview}</p>
 
         {/* Action Buttons */}
         <div className="flex justify-around md:justify-start md:gap-12 mb-12">
@@ -151,6 +183,7 @@ const MovieDetailPage: React.FC<MovieDetailPageProps> = ({
                         alt={movie.title}
                         className="w-full h-full object-cover rounded-t-md"
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                     <div className="p-4">

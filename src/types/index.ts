@@ -5,7 +5,8 @@ export type Movie = {
   title: string;
   overview: string;
   release_date: string;
-  genre_ids: number[];
+  genre_ids?: number[];
+  genre?: object[];
   release_year?: number;
   imageString?: string;
   age?: number;

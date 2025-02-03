@@ -15,7 +15,7 @@ export default async function MovieContainer() {
         endpoint="/movies/continue-watching?profileId=1"
       />
       <MovieSlider title={"Must-Watch"} endpoint="/movies/must-watch" />
-      <MovieSlider title={"Trending Now"} endpoint="/movies/trending" />
+      <MovieSlider title={"Popular on Netflix"} endpoint="/movies/trending" />
     </div>
   );
 }

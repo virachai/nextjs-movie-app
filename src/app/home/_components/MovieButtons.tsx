@@ -3,11 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Movie } from "@/types";
 import Link from "next/link";
 
-export default function MovieButtons({ id }: Movie) {
+interface MovieButtonsProps {
+  movie: Movie;
+}
+
+export default function MovieButtons({ movie }: MovieButtonsProps) {
   return (
     <>
       {/* Play Button wrapped with Link */}
-      <Link href={`/movie/${id}`} passHref>
+      <Link href={`/movie/${movie.id}`} passHref>
         <Button className="flex justify-center items-center bg-[white] hover:opacity-[0.95] px-6 py-2 rounded-md font-bold text-black text-lg hover:scale-105 transition-all duration-200 active:scale-100">
           <PlayCircle className="mr-2 w-5 h-5" /> Play
         </Button>
