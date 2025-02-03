@@ -102,20 +102,20 @@ const MovieDetailPage: React.FC = () => {
       </button>
 
       {/* Hero Section */}
-      <div className="relative h-[70vh]">
+      <div className="relative h-[75vh]">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-zinc-900" />
         <div className="absolute inset-0">
           <Image
             src={movie?.backdrop_path || PlaceholderImage}
             alt={movie?.title || "Movie"}
-            className="hidden sm:block absolute object-cover"
+            className="hidden sm:block absolute object-cover object-center"
             fill
             sizes="100vw"
           />
           <Image
             src={movie?.poster_path || PlaceholderImage}
             alt={movie?.title || "Movie"}
-            className="sm:hidden absolute object-cover"
+            className="sm:hidden absolute object-cover object-center"
             fill
             sizes="100vw"
           />
