@@ -91,45 +91,45 @@ const MovieDetailPage: React.FC = () => {
     );
 
   return (
-    <div className="bg-zinc-900 text-white min-h-screen relative">
+    <div className="relative bg-zinc-900 min-h-screen text-white">
       {/* Back Button */}
       <button
         onClick={handleBack}
-        className="absolute top-4 left-4 z-10 hover:bg-black/50 p-2 rounded-full transition"
+        className="top-4 left-4 z-10 absolute hover:bg-black/50 p-2 rounded-full transition"
         aria-label="Go back"
       >
         <ArrowLeft className="w-6 h-6" />
       </button>
 
       {/* Hero Section */}
-      <div className="relative h-[75vh]">
+      <div className="relative h-[75vh] lg:h-[80vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-zinc-900" />
         <div className="absolute inset-0">
           <Image
             src={movie?.backdrop_path || PlaceholderImage}
             alt={movie?.title || "Movie"}
-            className="hidden sm:block absolute object-cover object-center"
+            className="sm:block object-top absolute hidden object-cover"
             fill
             sizes="100vw"
           />
           <Image
             src={movie?.poster_path || PlaceholderImage}
             alt={movie?.title || "Movie"}
-            className="sm:hidden absolute object-cover object-center"
+            className="absolute sm:hidden object-center object-cover"
             fill
             sizes="100vw"
           />
         </div>
 
         {/* Content Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="right-0 bottom-0 left-0 absolute bg-gradient-to-t from-black to-transparent p-8">
+          <div className="mx-auto max-w-7xl">
+            <h1 className="mb-4 font-bold text-4xl md:text-5xl">
               {movie?.title}
             </h1>
 
             {/* Movie Meta Info */}
-            <div className="flex items-center gap-4 text-sm mb-4">
+            <div className="flex items-center gap-4 mb-4 text-sm">
               {movie?.release_year && (
                 <div className="flex items-center gap-1">
                   <CalendarDays className="w-4 h-4" />
@@ -142,14 +142,14 @@ const MovieDetailPage: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="px-4 md:px-6 py-8 max-w-7xl mx-auto">
+      <div className="mx-auto px-4 md:px-6 py-8 max-w-7xl">
         {/* Play Button */}
-        <button className="w-full md:w-auto md:px-12 bg-white text-black py-3 rounded-md font-semibold mb-6 hover:bg-white/90 transition flex items-center justify-center gap-2">
+        <button className="flex justify-center items-center gap-2 bg-white hover:bg-white/90 mb-6 md:px-12 py-3 rounded-md w-full md:w-auto font-semibold text-black transition">
           <span>▶</span> Play
         </button>
 
         {/* Overview */}
-        <p className="text-gray-300 mb-8 text-lg">{movie?.overview}</p>
+        <p className="mb-8 text-gray-300 text-lg">{movie?.overview}</p>
 
         {/* Action Buttons */}
         <div className="flex justify-around md:justify-start md:gap-12 mb-12">
@@ -170,8 +170,8 @@ const MovieDetailPage: React.FC = () => {
         {/* More Like This */}
         {similarMovies.length > 0 && (
           <div>
-            <h2 className="text-2xl font-semibold mb-4">More Like This</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <h2 className="mb-4 font-semibold text-2xl">More Like This</h2>
+            <div className="gap-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {similarMovies.map((movie) => (
                 <Card
                   key={movie.id}
@@ -182,15 +182,15 @@ const MovieDetailPage: React.FC = () => {
                       <Image
                         src={movie.poster_path}
                         alt={movie.title}
-                        className="w-full h-full object-cover rounded-t-md"
+                        className="rounded-t-md w-full h-full object-cover"
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold mb-1">{movie.title}</h3>
+                      <h3 className="mb-1 font-semibold">{movie.title}</h3>
                       {movie.release_year && (
-                        <p className="text-sm text-gray-400">
+                        <p className="text-gray-400 text-sm">
                           {movie.release_year}
                         </p>
                       )}

@@ -11,21 +11,21 @@ export default function MovieCardOverlay({ movie }: Props) {
   return (
     <>
       <Link href={`/movie/${id}`} passHref>
-        <button className="-mt-14 top-60">
+        <button className="top-60 -mt-14 hover:scale-110">
           <PlayCircle className="size-20" />
         </button>
       </Link>
 
-      <div className="absolute right-5 top-5 z-10">
+      <div className="top-5 right-5 z-10 absolute">
         <Button type="submit" variant="outline" size="icon">
-          <PlusIcon className="size-6 text-white" />
+          <PlusIcon className="text-white size-6" />
         </Button>
       </div>
       <Link href={`/movie/${movie.id}`} passHref>
-        <div className="absolute bottom-0 left-0 p-5">
-          <h1 className="line-clamp-2 text-[0.9rem] font-bold">{title}</h1>
+        <div className="bottom-0 left-0 absolute p-5">
+          <h1 className="line-clamp-2 font-bold text-[0.9rem]">{title}</h1>
           <div className="flex items-center gap-x-2">
-            <p className="text-sm font-normal">{release_year}</p>
+            <p className="font-normal text-sm">{release_year}</p>
           </div>
         </div>{" "}
       </Link>

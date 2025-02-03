@@ -49,13 +49,15 @@ export default function ProfilesPage() {
   return (
     <div className="flex flex-col items-center bg-black px-4 min-h-screen text-white">
       <div className="pt-8 pb-16 w-full max-w-6xl">
-        <Image
-          src={Logo}
-          alt="Netflix"
-          width={120}
-          height={32}
-          className="mx-auto mb-20"
-        />
+        <Link href="/home">
+          <Image
+            src={Logo}
+            alt="Netflix"
+            width={120}
+            height={32}
+            className="mx-auto mb-20"
+          />
+        </Link>
         <h1 className="mb-8 text-3xl text-center md:text-4xl">
           Who&apos;s Watching?
         </h1>
