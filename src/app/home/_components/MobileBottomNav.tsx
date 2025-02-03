@@ -11,7 +11,7 @@ const BottomNav = () => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-black border-t border-gray-800">
+    <div className="hidden sm:block fixed bottom-0 left-0 right-0 bg-black border-t border-gray-800">
       <nav className="max-w-screen-xl mx-auto">
         <ul className="flex justify-between items-center px-4 py-2">
           {navItems.map((item) => (
