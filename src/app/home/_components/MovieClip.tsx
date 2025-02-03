@@ -36,8 +36,6 @@ export default async function MovieClip() {
             src={movieImage}
             alt={title}
             fill
-            // layout="fill"
-            // objectFit="cover"
           />
 
           {/* Vignette layers for the dark overlay effect */}

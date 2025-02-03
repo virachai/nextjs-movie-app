@@ -3,7 +3,6 @@ import type { MediaCategory } from "@/types";
 
 export async function fetchMediasByCategory(
   category: MediaCategory,
-  userId: string
 ) {
   // console.log("fetchMediasByCategory", userId);
   switch (category) {
