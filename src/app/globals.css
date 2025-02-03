@@ -71,11 +71,18 @@
     user-select: none;
   }
 
-  .swiper-container {
+  .swiper-container:hover {
     overflow: visible !important;
   }
 
-  .swiper-container .swiper-slide:hover {
-    z-index: 1;
+  .swiper-container .swiper-wrapper .swiper-slide:hover {
+    z-index: 5;
+    position: relative;
   }
+
+  /* .swiper-container .swiper-wrapper .swiper-slide {
+    @apply border border-indigo-600;
+    z-index: -2147483648;
+    position: relative;
+  } */
 }

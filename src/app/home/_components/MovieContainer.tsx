@@ -1,16 +1,21 @@
-import { fetchUserWatchlist } from "./fetchUserWatchlist";
-import MovieSlider from "./MovieSlider";
-import type { Movie } from "@/types";
+// src/app/home/_components/MovieContainer.tsx
+import MovieSlider from "./MovieRow";
 
 export default async function MovieContainer() {
-  const movies = await fetchUserWatchlist(1);
-  const trendingMovies =
-    movies?.filter((elm: Movie, idx: number) => idx < 10 && elm) || [];
-
   return (
-    <>
-      <h1 className="font-bold text-2xl mb-3">Trending Now</h1>
-      <MovieSlider movies={trendingMovies} />
-    </>
+    <div className="relative z-20 flex flex-col-reverse mt-[-100px] px-[1.5rem] sm:px-8 lg:px-16 pt-4 pb-24 w-full overflow-hidden">
+      <MovieSlider title={"My list"} endpoint="/movies/my-list?profileId=1" />
+      <MovieSlider
+        title={"Only on NETFLIX"}
+        endpoint="/movies/exclusive"
+        large={true}
+      />
+      <MovieSlider
+        title={"Continue Watching for DH"}
+        endpoint="/movies/continue-watching?profileId=1"
+      />
+      <MovieSlider title={"Must-Watch"} endpoint="/movies/must-watch" />
+      <MovieSlider title={"Trending Now"} endpoint="/movies/trending" />
+    </div>
   );
 }
