@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { ReactNode } from "react";
 import Link from "next/link";
-import BackgroundImage from "../../../public/login_background.jpg";
-import Logo from "../../../public/netflix_logo.svg";
+import BackgroundImage from "@/../public/login_background.jpg";
+import Logo from "@/../public/netflix_logo.svg";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (

@@ -33,15 +33,15 @@ export default async function Page() {
       <div className="text-right mt-2 text-gray-500 text-sm">
         <Link
           className="text-base text-white hover:underline"
-          href="/forgot-password"
+          href="/select-profile"
         >
-          Forgot password?
+          Select Profile
         </Link>
       </div>
 
       <div className="mt-12 text-center text-gray-500 text-sm">
         <span>Don’t have an account? </span>
-        <Link className="text-base text-white hover:underline" href="/sign-up">
+        <Link className="text-base text-white hover:underline" href="/home">
           Create one
         </Link>
       </div>
