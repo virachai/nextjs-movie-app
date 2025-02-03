@@ -13,8 +13,8 @@ interface MovieCardProps {
 function MovieCard({ movie, large }: MovieCardProps) {
   const baseClasses =
     "relative cursor-pointer max-w-[280px] min-w-[100px] w-full";
-  const largeClasses = large ? "h-80" : "h-[130px]";
-  const largeClassesOverlay = large ? "h-80" : "h-56";
+  const largeClasses = large ? "h-52 sm:h-80" : "h-[150px] sm:h-[130px]";
+  const largeClassesOverlay = large ? "h-80" : "h-80";
   const imageSrc = large ? movie.poster_path : movie.backdrop_path;
 
   return (
