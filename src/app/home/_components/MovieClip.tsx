@@ -25,8 +25,16 @@ export default async function MovieClip() {
         <div className="relative z-0 bg-black w-full h-[56.25vw] min-h-[500px] max-h-[100vh] overflow-hidden">
           {/* Hero Image */}
           <Image
-            className="static-image w-full h-full hero image-layer object-cover"
+            className="sm:block static-image hidden w-full h-full hero image-layer object-cover"
             src={movieImage}
+            alt={data.title}
+            fill
+          />
+
+          {/* Hero Image for small screens */}
+          <Image
+            className="sm:hidden w-full h-full hero image-layer object-cover tatic-image"
+            src={data.poster_path || movieImage}
             alt={data.title}
             fill
           />
