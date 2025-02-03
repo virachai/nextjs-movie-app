@@ -25,7 +25,7 @@ export default async function MovieClip() {
     backdrop_path && backdrop_path !== "" ? backdrop_path : PlaceholderImage;
 
   return (
-    <section className="relative z-0 w-full">
+    <section className="relative w-full overflow-hidden">
       {/* Volatile Billboard Animations Container */}
       <div className="relative top-0 right-0 left-0">
         {/* Billboard container with background color and aspect ratio */}

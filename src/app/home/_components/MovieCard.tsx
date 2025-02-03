@@ -11,7 +11,7 @@ interface MovieCardProps {
 
 function MovieCard({ movie, large }: MovieCardProps) {
   const baseClasses =
-    "relative cursor-pointer h-32 max-w-[280px] min-w-[100px] w-full";
+    "relative cursor-pointer h-[150px] max-w-[280px] min-w-[100px] w-full";
   const largeClasses = large ? "h-80" : "";
   const largeClassesOverlay = large ? "h-80" : "h-56";
   const imageSrc = large ? movie.poster_path : movie.backdrop_path;
@@ -21,7 +21,14 @@ function MovieCard({ movie, large }: MovieCardProps) {
       <Image
         src={imageSrc}
         alt="Movie"
-        className="absolute object-cover"
+        className="hidden sm:block absolute object-cover"
+        fill
+      />
+
+      <Image
+        src={movie.poster_path}
+        alt="Movie"
+        className="sm:hidden absolute object-cover"
         fill
       />
 

@@ -2,9 +2,7 @@
 
 import { PlusIcon, PlayCircle } from "lucide-react";
 import { useState } from "react";
-
 import { Button } from "@/components/ui/button";
-
 import VideoPlayerModal from "./VideoPlayerModal";
 
 type Props = {
