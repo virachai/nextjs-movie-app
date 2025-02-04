@@ -14,9 +14,9 @@ type PageProps = {
 };
 
 // The Page component receives props with the correct type
-const Page = async ({ params }) => {
+const Page = async ({ params }: PageProps) => {
   // const { category } = params;
-  const { category } = await params;
+  const { category } = params;
 
   return (
     <div>
