@@ -24,7 +24,7 @@ export default function Navbar() {
 
       <div className="flex items-center gap-x-6 sm:gap-x-8">
         <MobileNavbar />
-        <Link href="/search">
+        <Link href="/search" className="sm:block hidden">
           <Search className="text-gray-300 cursor-pointer size-5" />
         </Link>
         <Bell className="text-gray-300 cursor-pointer size-5" />

@@ -1,6 +1,11 @@
-// src/lib/authOptions.ts
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { Session } from "next-auth"; // Adjust the import based on your project setup
+
+// Extend the Session type to include accessToken
+interface CustomSession extends Session {
+  accessToken: string;
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -11,10 +16,9 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // Use the NEXT_PUBLIC_BASE_API environment variable
-        const baseApiUrl = process.env.NEXT_PUBLIC_BASE_API;
+        const baseApiUrl =
+          process.env.NEXT_PUBLIC_BASE_API || "http://localhost:4000";
 
-        // Make the POST request to your backend API
         const res = await fetch(`${baseApiUrl}/auth/login`, {
           method: "POST",
           headers: {
@@ -26,23 +30,42 @@ export const authOptions: NextAuthOptions = {
           }),
         });
 
-        const user = await res.json();
+        const data = await res.json();
 
-        // If login was successful, return user data
-        if (res.ok && user) {
-          return user;
+        if (res.ok && data?.access_token) {
+          return {
+            id: data?.user_id || 0,
+            accessToken: data.access_token,
+            username: credentials?.username ?? "Unknown",
+          };
         } else {
-          // If authentication fails, return null
-          return null;
+          // Throw custom error
+          throw new Error("Authentication failed. Please try again.");
         }
       },
     }),
   ],
   session: {
     strategy: "jwt", // Store session as JWT
+    maxAge: 60 * 60 * 24, // Optional: Set the session expiration (1 day)
+  },
+  callbacks: {
+    async jwt({ token, account }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // Send properties to the client, like an access_token from a provider.
+      const customSession = session as CustomSession;
+      customSession.accessToken = token.accessToken as string;
+      return customSession;
+    },
   },
   pages: {
-    signIn: "/auth/signin", // Custom sign-in page
+    signIn: "/login",
   },
 };
 

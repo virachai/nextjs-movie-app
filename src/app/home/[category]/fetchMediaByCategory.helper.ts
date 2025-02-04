@@ -26,6 +26,11 @@ export async function fetchMediasByCategory(category: MediaCategory) {
         break;
       }
 
+      case "latest": {
+        endpoint = "/movies/latest";
+        break;
+      }
+
       default:
         throw new Error("Invalid category");
     }
