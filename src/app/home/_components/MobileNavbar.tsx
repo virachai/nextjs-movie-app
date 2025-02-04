@@ -23,9 +23,11 @@ export default function MobileNavbar() {
         <DropdownMenuContent className="w-56" align="end" forceMount>
           {links.map((link) => (
             <DropdownMenuItem key={link.id} className="cursor-pointer">
-              <Link href={link.href} className="w-full">
-                {link.name}
-              </Link>
+              <DropdownMenuTrigger asChild>
+                <Link href={link.href} className="w-full">
+                  {link.name}
+                </Link>
+              </DropdownMenuTrigger>
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
