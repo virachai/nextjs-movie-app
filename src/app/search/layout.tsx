@@ -12,7 +12,9 @@ export default async function Page({ children }: Props) {
         <Navbar />
       </div>
       <main className={`-mt-[75px] px-0 w-full mx-auto`}>{children}</main>
-      <BottomNav />
+      <div className="sm:block hidden">
+        <BottomNav />
+      </div>
     </>
   );
 }
