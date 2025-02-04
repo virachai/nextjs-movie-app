@@ -46,7 +46,7 @@ export default async function MovieClip() {
 
         {/* Movie Information */}
         <div className="top-0 left-0 z-10 absolute flex justify-start items-center px-4 sm:px-8 lg:px-16 w-full min-w-[375px] h-full">
-          <div className="top-0 bottom-0 z-10 absolute flex flex-col justify-end space-y-6 pb-[120px] md:pb-[130px] w-[80%] lg:w-2/5">
+          <div className="top-0 bottom-0 z-10 absolute flex flex-col justify-end space-y-6 pb-[120px] md:pb-[130px] w-[90%] lg:w-2/5">
             <h1 className="font-extrabold text-3xl text-white sm:text-4xl lg:text-5xl leading-tight">
               {data.title}
             </h1>
