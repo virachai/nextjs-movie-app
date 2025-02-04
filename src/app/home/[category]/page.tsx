@@ -2,27 +2,13 @@ import { MediaCategory, Movie } from "@/types";
 import MovieCard from "../_components/MovieCard";
 import { fetchMediasByCategory } from "./fetchMediaByCategory.helper";
 
-// This function is for server-side data fetching
-export async function generateMetadata({
-  params,
-}: {
-  params: { category: MediaCategory };
-}) {
-  return {
-    title: `${params.category} - Netflix`, // Example for setting metadata dynamically
-  };
-}
-
-type PageProps = {
+type Props = {
   params: {
     category: MediaCategory;
   };
 };
 
-// This is the main page component
-export default async function CategoryPage({
-  params: { category },
-}: PageProps) {
+export default async function CategoryPage({ params: { category } }: Props) {
   let mediaData: Movie[] = [];
 
   try {
