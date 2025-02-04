@@ -2,7 +2,7 @@
 
 // import { useState } from "react";
 import * as React from "react";
-import styles from "./SearchBar.module.css"; // Import CSS module
+import styles from "./SearchBar.module.css";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
