@@ -16,12 +16,12 @@ import SwitchProfileButtom from "./SwitchProfileButtom";
 export default async function UserButton() {
   const session = await getServerSession(authOptions);
 
-  // if (!session) {
-  //   return;
-  // }
+  if (!session) {
+    return;
+  }
 
   const avatarSrc = session?.user?.image || "/avatar.png";
-  const userShortName = session?.user?.name?.slice(0, 2) || "un";
+  const userShortName = session?.user?.name?.slice(0, 2) || "DH";
 
   return (
     <DropdownMenu>

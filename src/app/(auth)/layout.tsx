@@ -3,8 +3,21 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import BackgroundImage from "@/../public/login_background.jpg";
 import Logo from "@/../public/netflix_logo.svg";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
 
-export default function AuthLayout({ children }: { children: ReactNode }) {
+export default async function AuthLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const session = await getServerSession(authOptions);
+  // console.log(session);
+  if (session) {
+    return redirect("/home");
+  }
+
   return (
     <div className="relative flex flex-col sm:justify-center sm:items-center bg-black sm:bg-transparent w-screen min-w-[350px] h-screen">
       <Image

@@ -3,7 +3,9 @@ import Link from "next/link";
 import { Pencil } from "lucide-react";
 import Logo from "../../../public/netflix_logo.svg";
 import Placeholder from "../../../public/placeholder.svg";
-
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOptions";
 interface Profile {
   id: string;
   name: string;
@@ -45,7 +47,13 @@ const profiles: Profile[] = [
   },
 ];
 
-export default function ProfilesPage() {
+export default async function ProfilesPage() {
+  const session = await getServerSession(authOptions);
+  console.log(session);
+  if (!session) {
+    return redirect("/login");
+  }
+
   return (
     <div className="flex flex-col items-center bg-black px-4 min-h-screen text-white">
       <div className="pt-8 pb-16 w-full max-w-6xl">
