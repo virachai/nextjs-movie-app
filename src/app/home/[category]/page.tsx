@@ -1,7 +1,7 @@
 import { MediaCategory, Movie } from "@/types";
 import MovieCard from "../_components/MovieCard";
 import { fetchMediasByCategory } from "./fetchMediaByCategory.helper";
-import { categoryMap } from "@/lib/categoryMap"; // import the category mapping
+// import { categoryMap } from "@/lib/categoryMap"; // import the category mapping
 // import * as React from "react";
 // Correct type definition for PageProps
 type PageProps = {
