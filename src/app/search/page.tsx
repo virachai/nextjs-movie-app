@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <>
       <h1 className="hidden">Netflix Search</h1>
-      <div className="mt-20 flex flex-col">
+      <div className="flex flex-col mt-20 min-h-[100vh]">
         <SearchBar />
         <SearchContainer />
       </div>

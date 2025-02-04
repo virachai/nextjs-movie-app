@@ -1,4 +1,6 @@
+// src/app/search/_components/findData.ts
 const BASE_API = process.env.NEXT_PUBLIC_BASE_API || "http://localhost:4000";
+// const BASE_API = "http://localhost:4000";
 
 export async function findData<T>(
   endpoint: string,
@@ -14,6 +16,7 @@ export async function findData<T>(
 
     // Use the NEXT_PUBLIC_BASE_API constant in the fetch URL
     const response = await fetch(`${BASE_API}${endpoint}${queryString}`);
+    console.log("queryString", queryString);
 
     // Check if the response is successful (status 200)
     if (!response.ok) {

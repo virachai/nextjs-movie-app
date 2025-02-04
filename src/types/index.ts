@@ -21,4 +21,4 @@ export type Movie = {
   }[];
 };
 
-export type MediaCategory = "recently" | "movies" | "shows";
+export type MediaCategory = "list" | "movies" | "shows";

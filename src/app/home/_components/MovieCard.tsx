@@ -4,6 +4,7 @@ import Image from "next/image";
 import MovieCardOverlay from "./MovieCardOverlay";
 import { Movie } from "@/types";
 import Link from "next/link";
+import PlaceholderImage from "@/../public/placeholder.jpg";
 
 interface MovieCardProps {
   movie: Movie;
@@ -21,15 +22,22 @@ function MovieCard({ movie, large }: MovieCardProps) {
     <div className={`${baseClasses} ${largeClasses}`}>
       <Link href={`/movie/${movie.id}`} passHref>
         <Image
+          src={PlaceholderImage}
+          alt="Movie Placeholder"
+          className="absolute object-cover"
+          fill
+        />
+
+        <Image
           src={imageSrc}
           alt="Movie"
-          className="hidden sm:block absolute object-cover"
+          className="sm:block absolute hidden object-cover"
           fill
         />
         <Image
           src={movie.poster_path}
           alt="Movie"
-          className="sm:hidden absolute object-cover"
+          className="absolute sm:hidden object-cover"
           fill
         />
       </Link>

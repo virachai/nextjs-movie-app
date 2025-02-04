@@ -1,7 +1,7 @@
 import { findMovie } from "./findMovie.helper";
 import MovieButtons from "./MovieButtons";
 import type { Movie } from "@/types";
-import PlaceholderImage from "@/../public/placeholder.svg";
+import PlaceholderImage from "@/../public/placeholder.jpg";
 import Image from "next/image";
 
 export default async function MovieClip() {
