@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 const SearchBar = () => {
   const [isExpanded, setIsExpanded] = React.useState(true);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const [query, setQuery] = React.useState("");
 
   const handleSearchClick = () => {
     setIsExpanded(true);
@@ -30,13 +31,12 @@ const SearchBar = () => {
   const handleBack = () => {
     return redirect("/home");
   };
-  // const [query, setQuery] = useState("");
 
-  // const handleSearchChange = (
-  //   event: React.ChangeEvent<HTMLInputElement>
-  // ): void => {
-  //   setQuery(event.target.value);
-  // };
+  const handleSearchChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setQuery(event.target.value);
+  };
 
   // const handleSearchSubmit = (
   //   event: React.FormEvent<HTMLFormElement>
@@ -88,9 +88,11 @@ const SearchBar = () => {
               ref={inputRef}
               type="search"
               placeholder="Titles, people, genres"
+              value={query}
+              onChange={handleSearchChange}
               className={cn(
                 "h-10 bg-black/90 border-none text-white placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0",
-                "transition-all duration-300 ease-in-out",
+                "transition-all duration-300 ease-in-out ml-1",
                 isExpanded ? "w-[230px] pl-2 opacity-100" : "w-0 px-0 opacity-0"
               )}
               onBlur={handleBlur}
