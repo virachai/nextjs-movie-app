@@ -12,10 +12,10 @@ import { links } from "./Navlinks.constant";
 
 export default function MobileNavbar() {
   return (
-    <div className="md:hidden">
+    <div className="right-0 bottom-0 left-0 z-50 absolute md:hidden">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="cursor-pointer rounded-sm p-1 text-gray-300 transition hover:bg-slate-700">
+          <div className="hover:bg-slate-700 p-1 rounded-sm text-gray-300 transition cursor-pointer">
             <Menu />
           </div>
         </DropdownMenuTrigger>
