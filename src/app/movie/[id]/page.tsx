@@ -86,7 +86,7 @@ const MovieDetailPage: React.FC = () => {
   if (error)
     return (
       <div className="flex justify-center items-center min-h-screen text-red-500">
-        {error} {process.env.NEXT_PUBLIC_BASE_API}
+        {error}
       </div>
     );
 

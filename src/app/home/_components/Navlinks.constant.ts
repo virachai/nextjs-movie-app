@@ -10,6 +10,6 @@ export const links: linkProps[] = [
   { id: uuid(), name: "Home", href: "/home" },
   { id: uuid(), name: "Tv Shows", href: "/home/shows" },
   { id: uuid(), name: "Movies", href: "/home/movies" },
-  { id: uuid(), name: "Recently Added", href: "/home/recently" },
+  // { id: uuid(), name: "Recently Added", href: "/home/recently" },
   { id: uuid(), name: "My List", href: "/home/user/list" },
 ];

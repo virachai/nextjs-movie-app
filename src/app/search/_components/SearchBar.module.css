@@ -1,0 +1,26 @@
+/* src/app/search/_components/SearchBar.module.css */
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @apply px-[1.5rem] sm:px-8 lg:px-16 mt-6 sm:mt-0;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.search-bar button {
+  /* padding: 10px 15px; */
+  /* margin-left: 10px; */
+  font-size: 16px;
+  cursor: pointer;
+  /* background-color: #e50914; */
+  color: white;
+  border: none;
+  border-radius: 5px;
+}

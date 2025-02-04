@@ -16,12 +16,12 @@ import UserSignOutButton from "./UserSignOutButton";
 export default async function UserButton() {
   const session = await getServerSession(authOptions);
 
-  if (!session) {
-    return;
-  }
+  // if (!session) {
+  //   return;
+  // }
 
-  const avatarSrc = session.user?.image || "/avatar.png";
-  const userShortName = session.user?.name?.slice(0, 2) || "un";
+  const avatarSrc = session?.user?.image || "/avatar.png";
+  const userShortName = session?.user?.name?.slice(0, 2) || "un";
 
   return (
     <DropdownMenu>
@@ -40,10 +40,10 @@ export default async function UserButton() {
         <DropdownMenuLabel>
           <div className="flex flex-col space-y-2">
             <p className="text-sm font-medium leading-none">
-              {session.user?.name}
+              {session?.user?.name || userShortName}
             </p>
             <p className="text-xs leading-none text-muted-foreground">
-              {session.user?.email}
+              {session?.user?.email || "mail@exam.com"}
             </p>
           </div>
         </DropdownMenuLabel>

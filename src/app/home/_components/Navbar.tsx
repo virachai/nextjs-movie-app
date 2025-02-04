@@ -24,7 +24,9 @@ export default function Navbar() {
 
       <div className="flex items-center gap-x-8">
         <MobileNavbar />
-        <Search className="text-gray-300 cursor-pointer size-5" />
+        <Link href="/search">
+          <Search className="text-gray-300 cursor-pointer size-5" />
+        </Link>
         <Bell className="text-gray-300 cursor-pointer size-5" />
         <UserButton />
       </div>
