@@ -5,15 +5,18 @@
 // src/app/home/[category]/page.tsx
 import { MediaCategory } from "@/types"; // Adjust import based on your project
 
+import * as React from "react";
+// Correct type definition for PageProps
 type PageProps = {
-  params: { category: MediaCategory };
+  params: {
+    category: MediaCategory;
+  };
 };
 
-const Page = async ({ params }: PageProps) => {
-  // Await the params if it's a promise
-  const resolvedParams = await params;
-
-  const { category } = resolvedParams;
+// The Page component receives props with the correct type
+const Page = async ({ params }) => {
+  // const { category } = params;
+  const { category } = await params;
 
   return (
     <div>
