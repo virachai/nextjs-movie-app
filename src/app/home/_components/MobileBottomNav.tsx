@@ -5,7 +5,7 @@ import Link from "next/link";
 const BottomNav = () => {
   const navItems = [
     { icon: Home, label: "Home", href: "/home" },
-    { icon: PlayCircle, label: "New & Hot", href: "home/latest" },
+    { icon: PlayCircle, label: "New & Hot", href: "/home/latest" },
     { icon: Search, label: "Search", href: "/search" },
     { icon: Download, label: "Downloads", href: "/login" },
     { icon: Menu, label: "More", href: "" },
