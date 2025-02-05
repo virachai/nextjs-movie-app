@@ -13,6 +13,7 @@ This is a movie application built with Next.js. It allows users to browse and se
 - Back-end API developed with NestJS, acting as an API Gateway
 - Integration with a Free Movie API for fetching movie data
 - Handles business logic and data transformation between the front-end and back-end
+- **User authentication** using NextAuth, allowing users to log in and access personalized features like an avatar in the navigation bar once logged in.
 
 ## Getting Started
 
@@ -79,6 +80,14 @@ NEXT_PUBLIC_BASE_API=http://localhost:4000
 ```
 
 This will ensure the front-end communicates with the correct API endpoint.
+
+### User Authentication with NextAuth
+
+The app uses **NextAuth** for authentication. It allows users to log in and manage sessions. Upon successful login, users can see their avatar in the navigation bar.
+
+Once logged in, the user’s avatar will be displayed in the top navigation bar, helping to personalize the experience. This integration with **NextAuth** makes it easy to manage user sessions and authentication states.
+
+Make sure to configure **NextAuth** correctly to support login functionality. You can find the configuration in the `lib/authOptions.ts` file.
 
 ### Running the Development Server
 
