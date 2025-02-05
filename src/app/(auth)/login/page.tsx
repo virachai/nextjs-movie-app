@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { redirect } from "next/navigation";
 
 export default function SignInPage() {
   const [username, setUsername] = useState("netflix");
@@ -13,7 +14,7 @@ export default function SignInPage() {
   const [error, setError] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const router = useRouter();
+  // const router = useRouter();
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,7 +48,8 @@ export default function SignInPage() {
     } else {
       // If login is successful and token is returned
       if (result?.ok) {
-        router.push("/select-profile"); // Redirect to home page after successful login
+        // router.push("/select-profile"); // Redirect to home page after successful login
+        return redirect("/select-profile");
       } else {
         setError("Authentication failed. Please try again.");
       }
