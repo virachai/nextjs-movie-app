@@ -6,7 +6,7 @@ This is a movie application built with Next.js. It allows users to browse and se
 
 - Browse popular movies
 - Search for movies by title
-- View movie details including the backdrop and poster paths, title, overview, release date, genre IDs, and release year
+- View movie details including the backdrop and poster paths, title, overview, release date, and release year
 - Responsive design
 - Front-end developed with Next.js
 - Tailwind CSS used for styling and responsive design
