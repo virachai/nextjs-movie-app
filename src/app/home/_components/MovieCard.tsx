@@ -16,7 +16,7 @@ function MovieCard({ movie, large }: MovieCardProps) {
     "relative cursor-pointer max-w-[280px] min-w-[100px] w-full";
 
   // Use aspect-ratio for large view
-  const largeClasses = large ? "aspect-[10/15]" : "h-[150px] sm:h-[130px]"; // For non-large view, keep default height
+  const largeClasses = large ? "aspect-[10/15]" : "aspect-[10/15] sm:h-[130px]"; // For non-large view, keep default height
 
   // const largeClassesOverlay = large ? "aspect-[10/15]" : "aspect-[10/15]";
   const imageSrc = large ? movie.poster_path : movie.backdrop_path;
