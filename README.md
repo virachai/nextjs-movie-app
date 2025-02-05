@@ -70,6 +70,16 @@ To get started with the project, follow these steps:
      yarn install
      ```
 
+### Configuration
+
+Make sure to configure the `NEXT_PUBLIC_BASE_API` environment variable to point to your back-end API. Add the following to your `.env.local` file:
+
+```env
+NEXT_PUBLIC_BASE_API=http://localhost:4000
+```
+
+This will ensure the front-end communicates with the correct API endpoint.
+
 ### Running the Development Server
 
 To start the development server for the front-end:
