@@ -40,7 +40,7 @@ export default async function MovieClip() {
           />
 
           {/* Vignette layers for the dark overlay effect */}
-          <div className="top-0 left-0 absolute from-[#141414] opacity-40 w-full h-full"></div>
+          <div className="top-0 left-0 absolute bg-[#141414] opacity-40 w-full h-full"></div>
           {/* <div className="top-0 left-0 absolute bg-gradient-to-t from-[#141414] to-transparent w-full h-full"></div> */}
         </div>
 
