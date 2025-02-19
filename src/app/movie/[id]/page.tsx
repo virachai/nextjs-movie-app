@@ -89,6 +89,15 @@ const MovieDetailPage: React.FC = () => {
         {error}
       </div>
     );
+  const movieImage =
+    movie?.backdrop_path && movie.backdrop_path !== ""
+      ? movie.backdrop_path.replace("/w154/", "/w1280/")
+      : PlaceholderImage;
+
+  // Replace '/w154' with '/w1500' for the poster image
+  const posterImageUrl = movie?.poster_path
+    ? movie.poster_path.replace("/w92/", "/w500/")
+    : movieImage;
 
   return (
     <div className="relative bg-zinc-900 min-h-screen text-white">
@@ -106,16 +115,16 @@ const MovieDetailPage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-zinc-900" />
         <div className="absolute inset-0">
           <Image
-            src={movie?.backdrop_path || PlaceholderImage}
+            src={movieImage}
             alt={movie?.title || "Movie"}
-            className="sm:block object-top absolute hidden object-cover"
+            className="hidden sm:block absolute object-cover object-top"
             fill
             sizes="100vw"
           />
           <Image
-            src={movie?.poster_path || PlaceholderImage}
+            src={posterImageUrl}
             alt={movie?.title || "Movie"}
-            className="absolute sm:hidden object-center object-cover"
+            className="sm:hidden absolute object-center object-cover"
             fill
             sizes="100vw"
           />
